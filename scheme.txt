@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -243, "left": 22, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 19.8, "left": 47.4, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -166.8,
+      "left": 61.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -91.2,
+      "left": 47.45,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -172.9,
+      "left": 109.1,
+      "rotate": 90,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -207.2,
+      "left": 184.62,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -101.35,
+      "left": 133,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -199.2,
+      "left": 289.8,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -16,
+      "left": -162.4,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "bb1:20b.i", "uno:7", "green", [ "v0" ] ],
+    [ "uno:GND.2", "bb1:bn.25", "black", [ "v28.7", "h147.9", "v-278.4" ] ],
+    [ "uno:5V", "bb1:bp.25", "red", [ "v19.1", "h157.4", "v-288" ] ],
+    [ "pir1:GND", "bb1:bn.17", "black", [ "v0" ] ],
+    [ "pir1:VCC", "bb1:bp.15", "red", [ "v0" ] ],
+    [ "led1:A", "bb1:5b.f", "", [ "$bb" ] ],
+    [ "led1:C", "bb1:4b.f", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:4b.g", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:bp.3", "", [ "$bb" ] ],
+    [ "pir1:VCC", "bb1:19b.g", "", [ "$bb" ] ],
+    [ "pir1:OUT", "bb1:20b.g", "", [ "$bb" ] ],
+    [ "pir1:GND", "bb1:21b.g", "", [ "$bb" ] ],
+    [ "led1:A", "uno:12", "red", [ "v105.6", "h96" ] ],
+    [ "bb1:10b.j", "uno:8", "limegreen", [ "v96", "h86.4" ] ],
+    [ "bb1:bp.25", "bb1:tp.25", "red", [ "v-0.9", "h49.6", "v-172.8" ] ],
+    [ "bb1:12t.a", "bb1:tp.10", "green", [ "v0" ] ],
+    [ "btn1:1.l", "bb1:12t.b", "", [ "$bb" ] ],
+    [ "btn1:2.l", "bb1:10t.b", "", [ "$bb" ] ],
+    [ "btn1:1.r", "bb1:12b.g", "", [ "$bb" ] ],
+    [ "btn1:2.r", "bb1:10b.g", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:16b.i", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:10b.i", "", [ "$bb" ] ],
+    [ "bb1:16b.j", "bb1:bn.13", "black", [ "v0" ] ],
+    [ "ldr1:AO", "uno:A0", "green", [ "h19.2", "v229.7", "h230.4" ] ],
+    [ "ldr1:GND", "bb1:bn.1", "black", [ "h0" ] ],
+    [ "ldr1:VCC", "bb1:bp.1", "red", [ "h9.6", "v-57.6" ] ],
+    [ "bz1:1", "bb1:29b.g", "", [ "$bb" ] ],
+    [ "bz1:2", "bb1:30b.g", "", [ "$bb" ] ],
+    [ "bb1:29b.i", "bb1:bn.24", "black", [ "v0" ] ],
+    [ "bb1:30b.i", "uno:3", "green", [ "v0", "h28.8", "v86.4", "h-76.8" ] ]
+  ],
+  "dependencies": {}
+}
