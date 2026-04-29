@@ -18,16 +18,7 @@ void setup() {
 
 uint32_t t, hand;
 void loop() {
-  if(analogRead(PHOTO) < porog);
-  digitalWrite(LED, HIGH);
-if(analogRead(PHOTO) > porog);
-  digitalWrite(LED, LOW);
-
-
-
-
-  //tone(5, 3000, 500);
- static bool flag = false;
+  static bool flag = false;
   if (b.pressed()){
     digitalWrite(LED, HIGH);
     hand = millis();
@@ -38,17 +29,20 @@ if(analogRead(PHOTO) > porog);
       digitalWrite(LED, LOW);
       flag = false;
     }
-
-  if (digitalRead(PIR)){
-      digitalWrite(LED, HIGH);
-      t = millis();
-  }
+  
+    //tone(5, 3000, 500);
  
-  if (!digitalRead(PIR) and !flag){
-    if (millis() - t > 5000){
-      digitalWrite(LED, LOW);
-     }   
-  }
+
+   if (digitalRead(PIR) and (analogRead(PHOTO) < porog)){
+          digitalWrite(LED, HIGH);
+          t = millis();
+      }
+    
+      if (!digitalRead(PIR) and !flag){
+        if (millis() - t > 5000){
+          digitalWrite(LED, LOW);
+        }   
+      }
   
   
 }
