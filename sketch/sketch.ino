@@ -4,7 +4,7 @@
 #define LED 11
 #define BUZ 5
 #define PHOTO A0
-int porog = 500;
+int porog = 950;
 
 Button b(8);
 void setup() {
@@ -17,6 +17,7 @@ void setup() {
 }
 
 uint32_t t, hand;
+int dvij = 0;
 void loop() {
   static bool flag = false;
   if (b.pressed()){
@@ -30,13 +31,27 @@ void loop() {
       flag = false;
     }
   
-    //tone(5, 3000, 500);
+  bool svetlo = false;
+  if (analogRead(PHOTO) < porog)
+    svetlo = true;
  
-
-   if (digitalRead(PIR) and (analogRead(PHOTO) < porog)){
+  Serial.println(dvij);
+   //tone(5, 3000, 500);
+   bool now = digitalRead(PIR); 
+   static bool lastState = true;
+   if (now and lastState and svetlo){
+        delay(10);
+        if (digitalRead(PIR)){
+          lastState = false;
           digitalWrite(LED, HIGH);
+          dvij += 1;
           t = millis();
+        }
       }
+    if (now == 0 and lastState == false){
+        lastState = true;
+    }
+  
     
       if (!digitalRead(PIR) and !flag){
         if (millis() - t > 5000){
