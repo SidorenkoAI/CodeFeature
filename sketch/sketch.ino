@@ -4,6 +4,7 @@
 #define LED 11
 #define BUZ 5
 #define PHOTO A0
+int porog = 500;
 
 Button b(8);
 void setup() {
@@ -17,9 +18,15 @@ void setup() {
 
 uint32_t t, hand;
 void loop() {
+  if(analogRead(PHOTO) < porog);
+  digitalWrite(LED, HIGH);
+if(analogRead(PHOTO) > porog);
+  digitalWrite(LED, LOW);
+
+
+
+
   //tone(5, 3000, 500);
- Serial.println(analogRead(PHOTO));
- 
  static bool flag = false;
   if (b.pressed()){
     digitalWrite(LED, HIGH);
@@ -43,4 +50,6 @@ void loop() {
      }   
   }
   
+  
 }
+
